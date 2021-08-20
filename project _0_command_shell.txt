@@ -184,6 +184,3 @@ Note : Do this query without using $and operator.
 
 
 
-
-
-this is for test let check now 

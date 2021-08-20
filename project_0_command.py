@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from pprint import pprint
+import datetime
 # Establish connection.
 client = MongoClient() #creating object from mongoClient
 db = client.products 
@@ -92,13 +93,13 @@ x = db.restaurants
 # for  k in restaurants:
 #     pprint(k)
 # # #Question 22 ============================================================not
-# restaurants=x.find({"grades.date.ISODate":{"ISODate":("2014-08-11T00:00:00Z")},"grades.grade":"A" ,"grades.score" : 11},{"restaurant_id" : 1,"name":1,"grades":1})
+# restaurants=x.find({'grades.grade':'A','grades.score':11,'grades.date':datetime.datetime(2014,8,11,0,0,0)},{'restaurant_id':1,'name':1,'grades':1})
 # for  k in restaurants:
 #     pprint(k)
-# #Question 23 ============================================================not
-# restaurants=x.find({ "grades.1.date": "ISODate"("2014-08-11T00:00:00Z"),"grades.1.grade":"A" ,"grades.1.score" : 9},{"restaurant_id" : 1,"name":1,"grades":1})
-# for  k in restaurants:
-#     pprint(k)
+#Question 23 ============================================================not
+restaurants=x.find({'grades.1.date':datetime.datetime(2014,8,11,0,0,0),'grades.1.grade':'A','grades.1.score':9}, {'restaurant_id':1,'grades':1,'name':1} )
+for  k in restaurants:
+    pprint(k)
 # # #Question 24 ============================================================
 # restaurants=x.find({"address.coord.1": {"$gt" : 42, "$lte" : 52}},{"restaurant_id" : 1,"name":1,"address":1,"coord":1})
 # for  k in restaurants:
